@@ -1,0 +1,86 @@
+/* CSS général */
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/* CSS page de connexion */
+
+#connexion {
+    background-color: rgba(240,240,240,0.4);
+    height: 100%;
+}
+
+#connexion section {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    align-items: center;    
+}
+
+#connexion section h1 {
+    text-align: center;
+    margin-top: auto;
+    background-color:rgb(74, 176, 239);
+    width: 30%;
+    padding: 0 25px 0 25px;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    border: solid rgb(74, 176, 239) 1px;
+    border-bottom: solid black 1px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+#connexion section label {
+    color: rgb(128, 128, 128);
+}
+
+#connexion section div:nth-of-type(1) {
+    background-color: white;
+    border: solid rgb(74, 176, 239) 1px;
+    border-top: none;
+    width: 30%;
+    margin: auto;
+    margin-top: 0;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+
+#connexion section div:nth-of-type(1) div {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    border: none;
+    padding: 0px;
+    margin-top: 10px;
+}
+
+#connexion section div:nth-of-type(1) div input {
+    box-sizing: border-box;
+    border: solid rgb(128, 128, 128) 1px;
+    width: 100%;
+    height: 30px;
+    border-right: 0;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+}
+
+#connexion section div:nth-of-type(1) div button {
+    box-sizing: border-box;
+    border: solid rgb(128, 128, 128) 1px;
+    background-color: rgb(74, 176, 239);
+    width: 10%;
+    height: 30px;
+    border-left: 0;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+
+
