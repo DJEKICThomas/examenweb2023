@@ -132,6 +132,16 @@ header div:nth-of-type(2) button {
     font-weight: bold;
 }
 
+header div:nth-of-type(2) button:hover {
+    opacity: 0.9;
+    cursor: pointer;
+}
+
+#deconnexion {
+    border: solid rgb(228, 6, 6) 1px;
+    background-color: #dc3545!important;
+}
+
 header div:nth-of-type(2) span {
     margin-top: auto;
     margin-bottom: auto; 
@@ -139,16 +149,211 @@ header div:nth-of-type(2) span {
 
 /* CSS menu */
 
+#menu h1 {
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#menu section div {
+    display: flex;
+    justify-content: center;
+}
+
 #menu section div button {
     border-radius: 3px;
     border: 0;
     width: 20%;
     aspect-ratio: 1/1;
     padding: 20px;
-    background-color:  rgb(74, 176, 239);;
+    background-color:  rgb(74, 176, 239);
+    box-shadow: 2px 2px 2px rgb(83, 183, 245);
 }
+
+#menu section div button:hover {
+    opacity: 0.9;
+    cursor: pointer;
+}
+
+#menu section div button:nth-of-type(1) {
+    margin-right: 10px ;
+}
+
+#menu section div button:nth-of-type(2) {
+    margin-left: 10px;
+}
+
 
 #menu section div button img {
     width: 100%;
+    display: flex; 
+    align-content: center;   
 }
 
+/* CSS rapidité */
+
+#rapidite section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center; 
+}
+
+#rapidite section h1 {
+    margin-top: 20px;
+}
+
+#rapidite section p span {
+    font-weight: bold;
+}
+
+#rapidite section div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: auto;
+    width: 60%;
+    margin-top: 20px;
+}
+
+#rapidite section div * {
+    margin: auto;
+}
+
+
+#rapidite section div p:nth-of-type(1) {
+    border-radius: 50%;
+    border: solid 2px rgb(74, 176, 239);
+    height: 80px;
+    width: 80px;
+    font-size: 2em;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+} 
+
+
+
+#rapidite section div p:nth-of-type(2) {
+    border: solid 2px rgb(74, 176, 239);
+    height: 10vh;
+    width: 30vw;
+    font-size: 2em;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px; 
+} 
+
+#rapidite section div input {
+    border: solid 2px rgb(74, 176, 239);
+    height: 5vh;
+    width: 30vw;
+    font-size: 2em;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px; 
+    
+} 
+
+
+/* Mémoire */
+
+#memoire section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center; 
+}
+
+#memoire section h1 {
+    margin-top: 20px;
+}
+
+#memoire section p span {
+    font-weight: bold;
+}
+
+#memoire section > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: auto;
+    width: 60%;
+    margin-top: 20px;
+}
+
+#random_color {
+    width: 100px;
+    height: 100px;
+    background: linear-gradient(to right, violet, indigo, blue, cyan, green, yellow, orange, red);
+    border: solid 2px black;
+}
+
+#memoire section > div > div:nth-of-type(2) {
+    display: flex;
+    flex-direction: row;
+    margin-top: 40px ;
+    height: 50px;
+    width: 100%;
+}
+
+#memoire section > div > div:nth-of-type(2) div {
+    border: solid 1px black;
+    height: 100%;
+    width: 50px;
+}
+
+#memoire section > div > div:nth-of-type(2) div:nth-of-type(1) {
+    background-color: violet;
+}
+
+#memoire section > div > div:nth-of-type(2) div:nth-of-type(2) {
+    background-color: indigo;
+}
+
+#memoire section > div > div:nth-of-type(2) div:nth-of-type(3) {
+    background-color: blue;
+}
+
+#memoire section > div > div:nth-of-type(2) div:nth-of-type(4) {
+    background-color: cyan;
+}
+
+#memoire section > div > div:nth-of-type(2) div:nth-of-type(5) {
+    background-color: green;
+}
+
+#memoire section > div > div:nth-of-type(2) div:nth-of-type(6) {
+    background-color: yellow;
+}
+
+#memoire section > div > div:nth-of-type(2) div:nth-of-type(7) {
+    background-color: orange;
+}
+
+#memoire section > div > div:nth-of-type(2) div:nth-of-type(8) {
+    background-color: red;
+}
+
+#memoire section div * {
+    margin: auto;
+}
+
+#memoire section div button {
+    margin-top: 50px;
+    padding: 10px;
+    border: solid black 2px;
+    font-weight: bold;
+    background-color: rgb(152, 151, 151);
+    
+}
+
+#memoire section div button:hover {
+    opacity: 0.9;
+    cursor: pointer;
+}
