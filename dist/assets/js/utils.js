@@ -90,13 +90,34 @@ function login (paramNomUtilisateur)
     }
 }
 
-function logout () 
+function getUserActive ()
 {
     const cookie = JSON.parse(getCookie('sessions')); /* Récuperation cookie en chaine de caract que je transform en objet grace a JSON.parse */
     const userActif = cookie.activeUser; /* Récupérer le user actif*/
-    cookie.activeUser = null; /* Mettre l'utilisateur actif à nul */
-    cookie.userList.push(userActif); /* Mettre l'utilisateur qui ETAIT actif dans la liste user */
-    setCookie("sessions", JSON.stringify(cookie), 365);
+    return userActif ;
 }
 
+function logout () 
+{
+    if (getCookie("sessions") != null)
+    {
+        const cookie = JSON.parse(getCookie('sessions'));
+        const userActif = getUserActive();
+        cookie.activeUser = null; /* Mettre l'utilisateur actif à nul */
+        cookie.userList.push(userActif); /* Mettre l'utilisateur qui ETAIT actif dans la liste user */
+        setCookie("sessions", JSON.stringify(cookie), 365);
+    }
+}
 
+function isPlayerActive ()
+{
+    const userActif = getUserActive();
+    if (userActif != null)
+    {
+        return true ;
+    }
+    else
+    {
+        return false ;
+    }
+}
