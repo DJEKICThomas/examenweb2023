@@ -9,7 +9,7 @@
 <body id="rapidite"> 
     <header>
         <div>
-            <span>Total du jeu : </span><span id="points_rapidite"></span>
+            <span>Record du jeu : </span><span id="points_rapidite"></span>
             <!-- Remerciement à "https://www.flaticon.com/fr/icones-gratuites/jeton-non-fongible" pour l'img -->
             <img src="./assets/img/jetons.png" alt="Image introuvable">
         </div>
@@ -20,15 +20,19 @@
     </header>
     <section>
         <h1>Jeu de la rapidité</h1>
-        <p><span>But du jeu : </span>recopier le plus de mots dans un temps imparti de 60sec</p>
+        <p><span>But du jeu : </span>recopier le plus de mots dans un temps imparti de 60sec. Seul votre score max sera retenu</p>
         <div>
-            <p>60</p>
-            <p>Texte aléatoire à recopier</p>
-            <input id="mot" type="text" name="mot">
+            <p id="timerInGame">60</p>
+            <p id="randomWord">Texte aléatoire à recopier</p>
+            <span>Votre score actuel </span><span id="points_total_rapidite">0</span>
+            <input id="mot" type="text" name="mot" disabled>
+            <button id="lancerRapidite">Lancer la partie</button>
         </div>
     </section>
+    <script src="./assets/js/rapidite.js"></script>
     <script src="./assets/js/script.js"></script>
     <script src="./assets/js/utils.js"></script>
+    
 
 </body>
 </html>

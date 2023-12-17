@@ -247,6 +247,11 @@ header div:nth-of-type(2) span {
     margin-top: 30px; 
 } 
 
+#rapidite section div span:nth-of-type(1){
+    background-color: rgb(74, 176, 239);
+    margin-top: 10px;
+}
+
 #rapidite section div input {
     border: solid 2px rgb(74, 176, 239);
     height: 5vh;
@@ -256,9 +261,23 @@ header div:nth-of-type(2) span {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 30px; 
+    margin-top: 20px; 
     
 } 
+
+#rapidite section div button {
+    border-radius: 3px;
+    border: solid black 1px;
+    margin-top: 10px;
+    padding: 5px;
+    background-color:  rgb(74, 176, 239);
+}
+
+#rapidite section div button:hover {
+    opacity: 0.9;
+    cursor: pointer;
+}
+
 
 
 /* Mémoire */
@@ -292,6 +311,11 @@ header div:nth-of-type(2) span {
     height: 100px;
     background: linear-gradient(to right, violet, indigo, blue, cyan, green, yellow, orange, red);
     border: solid 2px black;
+}
+
+#paletteColor div {
+    opacity: 0.9;
+    cursor: pointer;
 }
 
 #memoire section > div > div:nth-of-type(2) {

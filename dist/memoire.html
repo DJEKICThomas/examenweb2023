@@ -9,7 +9,7 @@
 <body id="memoire"> 
     <header>
         <div>
-            <span>Total du jeu : </span><span id="points_memoire"></span>
+            <span>Record du jeu :</span><span id="points_memoire"></span>
             <!-- Remerciement à "https://www.flaticon.com/fr/icones-gratuites/jeton-non-fongible" pour l'img -->
             <img src="./assets/img/jetons.png" alt="Image introuvable">
         </div>
@@ -22,22 +22,28 @@
         <h1>Jeu de la mémoire</h1>
         <p><span>But du jeu : </span>répéter la séquence de couleur défilant à l'écran</p>
         <div>
-            <div id="random_color">Carré de base</div>
-            <div>
-                <div>1</div>
-                <div>2</div>
-                <div>3</div>
-                <div>4</div>
-                <div>5</div>
-                <div>6</div>
-                <div>7</div>
-                <div>8</div>
+            <div id="random_color"></div>
+            <div id="paletteColor">
+                <div class="color" data-color="violet">1</div>
+                <div class="color" data-color="indigo">2</div>
+                <div class="color" data-color="blue">3</div>
+                <div class="color" data-color="cyan">4</div>
+                <div class="color" data-color="green">5</div>
+                <div class="color" data-color="yellow">6</div>
+                <div class="color" data-color="orange">7</div>
+                <div class="color" data-color="red">8</div>
             </div>
-            <button type="button">Séquence suivante</button>
+            <span>Nombre de clics </span><span id="nbre_click">0</span>
+            <span>Votre score actuel </span><span id="points_total_memoire">0</span>
+            <span>Votre level actuel </span><span id="level_memoire">0</span>
+            
+            <button type="button" id="lancerMemoire">Lancer la partie</button>
         </div>
     </section>
+    <script src="./assets/js/memoire.js"></script>
     <script src="./assets/js/script.js"></script>
     <script src="./assets/js/utils.js"></script>
+    
 
 </body>
 </html>
