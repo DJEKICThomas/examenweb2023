@@ -151,7 +151,7 @@ if (load_page_menu != null || load_page_memoire != null || load_page_rapidite !=
     PROCESS : Permet de diminuer le timer du jeu
     OUTPUT : -
 */
-function diminuerTimer ()
+function diminuerTimer()
 {
     //je récup le cookie sous forme d'un objet
     let cookie = JSON.parse(getCookie('sessions'));
@@ -185,7 +185,7 @@ function diminuerTimer ()
     PROCESS : Affiche le mot qu'on a récupéré dans la fonction getRandomWord (générée par l'API)
     OUTPUT : -
 */
-function afficherWord ()
+function afficherWord()
 {
     word = getRandomWord();
     document.getElementById("randomWord").innerHTML = word;

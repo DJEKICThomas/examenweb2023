@@ -1,3 +1,5 @@
+/*global login, logout, isPlayerActive, getCookie, getUserActive, setCookie, getRandomWord, getRandomColor*/
+
 /*
     INPUT : Nom du cookie, Valeur du cookie, Durée du cookie
     PROCESS : Création d'un cookie
@@ -38,7 +40,7 @@ function getCookie(cookieName)
     PROCESS : Créer un objet utilisateur
     OUTPUT : Renvoyer un objet utilisateur
 */
-function createUser (paramNomUtilisateur, paramPointMemoire, paramPointRapidite)
+function createUser(paramNomUtilisateur, paramPointMemoire, paramPointRapidite)
 {
     const user = {nomUtilisateur: paramNomUtilisateur, pointMemoire: paramPointMemoire, pointRapidite: paramPointRapidite};
 
@@ -50,7 +52,8 @@ function createUser (paramNomUtilisateur, paramPointMemoire, paramPointRapidite)
     PROCESS : Permet de connecter un utilisateur en récupérant son nom
     OUTPUT : -
 */
-function login (paramNomUtilisateur)
+
+function login(paramNomUtilisateur)
 {
     /* S'il n'y a pas de cookie, on crée un cookie */
     if (getCookie('sessions') == null)
@@ -101,7 +104,7 @@ function login (paramNomUtilisateur)
     PROCESS : Récupère le userActif
     OUTPUT : Renvoie le userActivf
 */
-function getUserActive ()
+function getUserActive()
 {
     const cookie = JSON.parse(getCookie('sessions')); /* Récuperation cookie en chaine de caract que je transform en objet grace a JSON.parse */
     const userActif = cookie.activeUser; /* Récupérer le user actif*/
@@ -113,7 +116,7 @@ function getUserActive ()
     PROCESS : Mets le userActiv dans la liste de User (donc plus dans l'actif)
     OUTPUT : -
 */
-function logout () 
+function logout() 
 {
     if (getCookie("sessions") != null)
     {
@@ -130,7 +133,7 @@ function logout ()
     PROCESS : Permet de savoir si qqn est déjà connecté
     OUTPUT : Retourne vrai ou faux
 */
-function isPlayerActive ()
+function isPlayerActive()
 {
     const userActif = getUserActive();
     if (userActif != null)

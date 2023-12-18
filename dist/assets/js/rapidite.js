@@ -4,7 +4,8 @@
     OUTPUT : Retourne le mot
 */
 
-function getRandomWord ()
+/*eslint-disable-next-line no-unused-vars*/
+function getRandomWord()
 {
     //On crée un objet XMLHttpRequest
     let xhr = new XMLHttpRequest();
@@ -22,7 +23,7 @@ function getRandomWord ()
         return objectRandomWord.name;
     }
     else
-    { 
+    {
         //...On affiche le statut et le message correspondant
         alert("Erreur " + xhr.status + " : " + xhr.statusText);
     }
