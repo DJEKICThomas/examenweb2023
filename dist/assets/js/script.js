@@ -95,7 +95,53 @@ if (load_page_connexion != null)
     });
 }
 
+/*
+    INPUT : -
+    PROCESS : Affiche le mot qu'on a récupéré dans la fonction getRandomWord (générée par l'API)
+    OUTPUT : -
+*/
+function afficherWord()
+{
+    word = getRandomWord();
+    document.getElementById("randomWord").innerHTML = word;
+}
+
 /* RAPIDITE */
+
+/*
+    INPUT :
+    PROCESS : Permet de diminuer le timer du jeu
+    OUTPUT : -
+*/
+function diminuerTimer()
+{
+    //je récup le cookie sous forme d'un objet
+    let cookie = JSON.parse(getCookie("sessions"));
+
+    timer--;
+    if (timer == 0)
+    {
+        //Me permet de supprimer la tâche répétitive pour pas atteindre -1 dans le timer
+        clearInterval(interval);
+        wordInput.disabled = true;
+        timer = 60;
+        btn_lancerRapidite.innerHTML = "Relancer la partie";
+        btn_lancerRapidite.disabled = false;
+        //Remplace le mot par le texte
+        document.getElementById("randomWord").innerHTML = "Texte aléatoire à recopier";
+        document.getElementById("points_total_rapidite").innerHTML = 0;
+
+        if(inGamePointRapidite > cookie.activeUser.pointRapidite)
+        {
+            cookie.activeUser.pointRapidite = inGamePointRapidite;
+            //Je modifie le cookie
+            setCookie("sessions",JSON.stringify(cookie),365);
+            spanPointRapidite.innerHTML = cookie.activeUser.pointRapidite;
+        }
+    }
+    document.getElementById("timerInGame").innerHTML = timer;
+}
+
 /* On vérifie qu'il existe un btn_menu dans la page chargée et ajouter l'événement*/
 if (btn_lancerRapidite != null)
 {
@@ -148,50 +194,6 @@ if (load_page_menu != null || load_page_memoire != null || load_page_rapidite !=
 }
 
 /* RAPIDITE */
-/*
-    INPUT :
-    PROCESS : Permet de diminuer le timer du jeu
-    OUTPUT : -
-*/
-function diminuerTimer()
-{
-    //je récup le cookie sous forme d'un objet
-    let cookie = JSON.parse(getCookie("sessions"));
-
-    timer--;
-    if (timer == 0)
-    {
-        //Me permet de supprimer la tâche répétitive pour pas atteindre -1 dans le timer
-        clearInterval(interval);
-        wordInput.disabled = true;
-        timer = 60;
-        btn_lancerRapidite.innerHTML = "Relancer la partie";
-        btn_lancerRapidite.disabled = false;
-        //Remplace le mot par le texte
-        document.getElementById("randomWord").innerHTML = "Texte aléatoire à recopier";
-        document.getElementById("points_total_rapidite").innerHTML = 0;
-
-        if(inGamePointRapidite > cookie.activeUser.pointRapidite)
-        {
-            cookie.activeUser.pointRapidite = inGamePointRapidite;
-            //Je modifie le cookie
-            setCookie("sessions",JSON.stringify(cookie),365);
-            spanPointRapidite.innerHTML = cookie.activeUser.pointRapidite;
-        }
-    }
-    document.getElementById("timerInGame").innerHTML = timer;
-}
-
-/*
-    INPUT : -
-    PROCESS : Affiche le mot qu'on a récupéré dans la fonction getRandomWord (générée par l'API)
-    OUTPUT : -
-*/
-function afficherWord()
-{
-    word = getRandomWord();
-    document.getElementById("randomWord").innerHTML = word;
-}
 
 /* Savoir si l'élément existe, s'il existe alors on peut l'utiliser sinon ça veut dire qu'il n'est pas présent sur la page */
 if(wordInput != null)
@@ -208,13 +210,6 @@ if(wordInput != null)
 }
 
 /* Memoire */
-
-if (btn_lancerMemoire != null)
-{
-    btn_lancerMemoire.addEventListener("click", () => {
-        lancerPartie();
-    });
-}
 
 /*
     INPUT : -
@@ -262,6 +257,13 @@ function lancerPartie()
         paletteActive = true;
         document.getElementById("paletteColor").style.visibility = "visible";
     }, duree);
+}
+
+if (btn_lancerMemoire != null)
+{
+    btn_lancerMemoire.addEventListener("click", () => {
+        lancerPartie();
+    });
 }
 
 // Vu que c'est un ClassName on vérifie que c'est pas 0 (idem que null quand c'est un getElementById)
