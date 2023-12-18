@@ -71,7 +71,7 @@ if (btn_connexion != null)
         {
             document.getElementById("badName").innerHTML = "Votre nom d'utilisateur doit avoir minimum 2 caractères";
             document.getElementById("badName").style.color = "red";
-        }     
+        }
     });
 }
 
