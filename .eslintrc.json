@@ -13,7 +13,20 @@
             "error",
             4
         ],
-        "camelcase": "error",
+        "camelcase": "off",
+        "naming-convention": [
+            "error",
+            // Camel case
+            {
+                "selector": "default",
+                "format": ["camelCase"]
+            },
+            // Snake case
+            {
+                "selector": "default",
+                "format": ["snake_case"]
+            }
+        ],
         "linebreak-style": 0,
         "quotes": [
             "error",
