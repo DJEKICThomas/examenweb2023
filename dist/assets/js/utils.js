@@ -1,5 +1,3 @@
-/*global login, logout, isPlayerActive, getCookie, getUserActive, setCookie, getRandomWord, getRandomColor*/
-
 /*
     INPUT : Nom du cookie, Valeur du cookie, Durée du cookie
     PROCESS : Création d'un cookie
