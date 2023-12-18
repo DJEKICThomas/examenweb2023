@@ -71,7 +71,7 @@ if (btn_connexion != null)
         {
             document.getElementById("badName").innerHTML = "Votre nom d'utilisateur doit avoir minimum 2 caractères";
             document.getElementById("badName").style.color = "red";
-        }       
+        }     
     });
 }
 
@@ -104,12 +104,12 @@ if (btn_lancerRapidite != null)
         afficherWord();
         wordInput.disabled = false;
         interval = setInterval(diminuerTimer, 1000);
-        btn_lancerRapidite.disabled = true;   
+        btn_lancerRapidite.disabled = true;
     });
 }
 
 /* On vérifie quelle page est chargée s'il en a l'autorisation et on charge son contenu */
-if (load_page_menu != null || load_page_memoire != null || load_page_rapidite != null )
+if (load_page_menu != null || load_page_memoire != null || load_page_rapidite != null)
 {
     //Se déclenche si je me situe sur une de ces pages uniquement
     document.addEventListener("DOMContentLoaded", () => {
@@ -149,15 +149,15 @@ if (load_page_menu != null || load_page_memoire != null || load_page_rapidite !=
 
 /* RAPIDITE */
 /*
-    INPUT : 
+    INPUT :
     PROCESS : Permet de diminuer le timer du jeu
     OUTPUT : -
 */
 function diminuerTimer()
 {
     //je récup le cookie sous forme d'un objet
-    let cookie = JSON.parse(getCookie('sessions'));
-    
+    let cookie = JSON.parse(getCookie("sessions"));
+
     timer--;
     if (timer == 0)
     {
@@ -176,7 +176,7 @@ function diminuerTimer()
             cookie.activeUser.pointRapidite = inGamePointRapidite;
             //Je modifie le cookie
             setCookie("sessions",JSON.stringify(cookie),365);
-            spanPointRapidite.innerHTML = cookie.activeUser.pointRapidite;   
+            spanPointRapidite.innerHTML = cookie.activeUser.pointRapidite;
         }
     }
     document.getElementById("timerInGame").innerHTML = timer;
@@ -218,7 +218,7 @@ if (btn_lancerMemoire != null)
 
 /*
     INPUT : -
-    PROCESS : Permet de lancer la partie mémoire. On active le bouton de lancer, puis on le désactive et on met un timer qui affiche d'abord la bonne couleur, 
+    PROCESS : Permet de lancer la partie mémoire. On active le bouton de lancer, puis on le désactive et on met un timer qui affiche d'abord la bonne couleur,
               puis du blanc ainsi de suite. Puis on met la palette de couleur linear à la fin de la séquence
     OUTPUT : -
 */
@@ -242,18 +242,18 @@ function lancerPartie()
         setTimeout(function() {
             document.getElementById("random_color").style.background = arrayColor[i];
         }, duree);
-       
+
         //Créer un décalage les uns aux autres
         duree = duree + 1500;
-        
+
         //Permet de savoir si on est sur la dernière couleur ou pas
-        if (i < (arrayColor.length)-1)
+        if (i < (arrayColor.length) - 1)
         {
             setTimeout(function() {
                 document.getElementById("random_color").style.background = "white";
             }, duree);
         }
-        
+
         duree = duree + 1500;
     }
 
@@ -261,7 +261,7 @@ function lancerPartie()
         document.getElementById("random_color").style.background = "linear-gradient(to right, violet, indigo, blue, cyan, green, yellow, orange, red)";
         paletteActive = true;
         document.getElementById("paletteColor").style.visibility = "visible";
-    }, duree);  
+    }, duree);
 }
 
 // Vu que c'est un ClassName on vérifie que c'est pas 0 (idem que null quand c'est un getElementById)
@@ -296,7 +296,7 @@ if (btn_colorPalette.length != 0)
                     else
                     {
                         //S'il échoue, on ouvre le cookie
-                        let cookie = JSON.parse(getCookie('sessions'));
+                        let cookie = JSON.parse(getCookie("sessions"));
                         if (inGameMemoire > cookie.activeUser.pointMemoire)
                         {
                             cookie.activeUser.pointMemoire = inGameMemoire;
@@ -312,7 +312,7 @@ if (btn_colorPalette.length != 0)
                         spanPointMemoire.innerHTML = "0";
                         btn_lancerMemoire.disabled = false;
                         btn_lancerMemoire.innerHTML = "Relancer une partie";
-                        arrayColor =[];
+                        arrayColor = [];
                     }
                 }
             }
