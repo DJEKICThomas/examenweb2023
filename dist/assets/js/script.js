@@ -1,5 +1,5 @@
 /*global login, logout, isPlayerActive, getCookie, getUserActive, setCookie, getRandomWord, getRandomColor*/
-/*eslint-disable cammelcase*/
+
 let btn_memoire = document.getElementById("btn_memoire");
 let btn_rapidite = document.getElementById("btn_rapidite");
 let btn_menu = document.getElementById("btn_menu");
