@@ -183,7 +183,6 @@ header div:nth-of-type(2) span {
     margin-left: 10px;
 }
 
-
 #menu section div button img {
     width: 100%;
     display: flex; 
@@ -368,13 +367,18 @@ header div:nth-of-type(2) span {
     margin: auto;
 }
 
+#memoire section > div > div:nth-of-type(3) {
+    display: flex;
+    flex-direction: column;
+    margin-top : 20px;
+}
+
 #memoire section div button {
-    margin-top: 50px;
+    margin-top: 20px;
     padding: 10px;
     border: solid black 2px;
     font-weight: bold;
-    background-color: rgb(152, 151, 151);
-    
+    background-color:  rgb(74, 176, 239);
 }
 
 #memoire section div button:hover {
