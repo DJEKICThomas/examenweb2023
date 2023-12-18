@@ -1,3 +1,9 @@
+/*
+    INPUT : -
+    PROCESS : Récupération d'un mot via un API si on arrive à avoir accès à l'API on récupère le mot dans un objet et on retourne le mot
+    OUTPUT : Retourne le mot
+*/
+
 function getRandomWord ()
 {
     //On crée un objet XMLHttpRequest

@@ -16,13 +16,9 @@ let spanNbreClick = document.getElementById("nbre_click");
 let spanPointMemoire = document.getElementById("points_total_memoire");
 let spanLvlActuel = document.getElementById("level_memoire");
 
-
-
 let choixColor = [];
-
 let arrayColor = [];
 let paletteActive = false ;
-
 
 let interval;
 let timer = 60;
@@ -58,6 +54,7 @@ if (btn_menu != null)
     });
 }
 
+/* On vérifie qu'il existe un btn_connexion dans la page chargée et ajouter l'événement de vérification*/
 if (btn_connexion != null)
 {
     btn_connexion.addEventListener("click", () => {
@@ -72,11 +69,11 @@ if (btn_connexion != null)
         {
             document.getElementById("badName").innerHTML = "Votre nom d'utilisateur doit avoir minimum 2 caractères";
             document.getElementById("badName").style.color = "red";
-        }
-        
+        }       
     });
 }
 
+/* On vérifie qu'il existe un btn_deconnexion dans la page chargée et ajouter l'événement*/
 if (btn_deconnexion != null)
 {
     btn_deconnexion.addEventListener("click", () => {
@@ -85,7 +82,7 @@ if (btn_deconnexion != null)
     });
 }
 
-
+/* Ajouter un événement au chargement de la page connexion */
 if (load_page_connexion != null)
 {
     document.addEventListener("DOMContentLoaded", () => {
@@ -109,22 +106,25 @@ if (btn_lancerRapidite != null)
     });
 }
 
+/* On vérifie quelle page est chargée s'il en a l'autorisation et on charge son contenu */
 if (load_page_menu != null || load_page_memoire != null || load_page_rapidite != null )
 {
+    //Se déclenche si je me situe sur une de ces pages uniquement
     document.addEventListener("DOMContentLoaded", () => {
 
-        /* Vérifie qu'un cookie existe bien sinon on renvoi à l'accueil */
+        /* Vérifie qu'un cookie existe bien sinon on renvoi à la connexion */
         if (getCookie("sessions") == null)
         {
             location.href = "index.html";
         }
-
+        //S'il y a un cookie mais qu'aucune personne n'est connectée alors on redirige vers la connexion
         if (isPlayerActive() == false)
         {
             location.href = "index.html";
         }
         else
         {
+            //On vérifie quelle page est chargée et on y met les données nécessaires
             if (load_page_menu != null)
             {
                 let userActif = getUserActive();
@@ -142,12 +142,15 @@ if (load_page_menu != null || load_page_memoire != null || load_page_rapidite !=
                 document.getElementById("points_rapidite").innerHTML = userActif.pointRapidite;
             }
         }
-
     });
 }
 
 /* RAPIDITE */
-
+/*
+    INPUT : 
+    PROCESS : Permet de diminuer le timer du jeu
+    OUTPUT : -
+*/
 function diminuerTimer ()
 {
     //je récup le cookie sous forme d'un objet
@@ -156,11 +159,13 @@ function diminuerTimer ()
     timer--;
     if (timer == 0)
     {
+        //Me permet de supprimer la tâche répétitive pour pas atteindre -1 dans le timer
         clearInterval(interval);
         wordInput.disabled = true;
         timer = 60;
         btn_lancerRapidite.innerHTML = "Relancer la partie";
         btn_lancerRapidite.disabled = false;
+        //Remplace le mot par le texte
         document.getElementById("randomWord").innerHTML = "Texte aléatoire à recopier";
         document.getElementById("points_total_rapidite").innerHTML = 0;
 
@@ -172,16 +177,21 @@ function diminuerTimer ()
             spanPointRapidite.innerHTML = cookie.activeUser.pointRapidite;   
         }
     }
-
     document.getElementById("timerInGame").innerHTML = timer;
 }
 
+/*
+    INPUT : -
+    PROCESS : Affiche le mot qu'on a récupéré dans la fonction getRandomWord (générée par l'API)
+    OUTPUT : -
+*/
 function afficherWord ()
 {
     word = getRandomWord();
     document.getElementById("randomWord").innerHTML = word;
 }
 
+/* Savoir si l'élément existe, s'il existe alors on peut l'utiliser sinon ça veut dire qu'il n'est pas présent sur la page */
 if(wordInput != null)
 {
     wordInput.addEventListener("keyup", () => {
@@ -195,7 +205,6 @@ if(wordInput != null)
     });
 }
 
-
 /* Memoire */
 
 if (btn_lancerMemoire != null)
@@ -205,14 +214,21 @@ if (btn_lancerMemoire != null)
     });
 }
 
+/*
+    INPUT : -
+    PROCESS : Permet de lancer la partie mémoire. On active le bouton de lancer, puis on le désactive et on met un timer qui affiche d'abord la bonne couleur, 
+              puis du blanc ainsi de suite. Puis on met la palette de couleur linear à la fin de la séquence
+    OUTPUT : -
+*/
 function lancerPartie()
 {
     let duree = 1500;
     choixColor = [];
     btn_lancerMemoire.disabled = true;
 
-    paletteActive = false ;
+    paletteActive = false;
 
+    //On cache la palette de couleur pour l'utilisateur
     document.getElementById("paletteColor").style.visibility = "hidden";
 
     //On push dans le tableau la couleur
@@ -220,12 +236,15 @@ function lancerPartie()
 
     for (let i = 0; i < arrayColor.length ; i++)
     {
+        //lire le reste, asynch, se réalise sans attendre
         setTimeout(function() {
             document.getElementById("random_color").style.background = arrayColor[i];
         }, duree);
        
+        //Créer un décalage les uns aux autres
         duree = duree + 1500;
         
+        //Permet de savoir si on est sur la dernière couleur ou pas
         if (i < (arrayColor.length)-1)
         {
             setTimeout(function() {
@@ -233,32 +252,35 @@ function lancerPartie()
             }, duree);
         }
         
-
         duree = duree + 1500;
     }
 
     setTimeout(function() {
         document.getElementById("random_color").style.background = "linear-gradient(to right, violet, indigo, blue, cyan, green, yellow, orange, red)";
-        paletteActive = true ;
+        paletteActive = true;
         document.getElementById("paletteColor").style.visibility = "visible";
     }, duree);  
 }
 
+// Vu que c'est un ClassName on vérifie que c'est pas 0 (idem que null quand c'est un getElementById)
 if (btn_colorPalette.length != 0)
 {
     for (let i = 0 ; i < btn_colorPalette.length ; i++)
     {
+        //Pour chaque couleur je mets un événement
         btn_colorPalette[i].addEventListener("click", () => {
             if (paletteActive)
             {
-                let colorBackground = btn_colorPalette[i].dataset.color;
+                let colorBackground = btn_colorPalette[i].dataset.color; //Récupère le data color HTML (en texte)
                 choixColor.push(colorBackground);
                 nbre_click++;
                 spanNbreClick.innerHTML = nbre_click;
 
+                //Je commence la vérification quand il a encodé le nbre de couleurs de la séquence
                 if (choixColor.length == arrayColor.length)
                 {
-                    if (JSON.stringify(choixColor) == JSON.stringify(arrayColor))
+                    //On vérifie que le choix de l'utilisateur correspond aux couleurs qu'on lui a montré
+                    if (JSON.stringify(choixColor) == JSON.stringify(arrayColor)) //Permet de transformer un tableau en chaine de caractère
                     {
                         level++;
                         inGameMemoire++;
@@ -266,10 +288,12 @@ if (btn_colorPalette.length != 0)
                         spanNbreClick.innerHTML = "0";
                         spanLvlActuel.innerHTML = level;
                         spanPointMemoire.innerHTML = inGameMemoire;
+                        //si l'utilisateur a bon, il peut relancer une nouvelle séquence
                         lancerPartie();
                     }
                     else
                     {
+                        //S'il échoue, on ouvre le cookie
                         let cookie = JSON.parse(getCookie('sessions'));
                         if (inGameMemoire > cookie.activeUser.pointMemoire)
                         {
@@ -290,7 +314,6 @@ if (btn_colorPalette.length != 0)
                     }
                 }
             }
-            
         });
     }
 }
